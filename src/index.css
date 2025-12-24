@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html, body, #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-semibold text-white;
+  }
+
+  /* nicer focus styles */
+  :focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12);
+    border-radius: 6px;
+  }
+}
+
+@layer components {
+  .chip {
+    @apply inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-medium bg-slate-800/60 border border-slate-700;
+  }
+}

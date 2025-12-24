@@ -1,6 +1,11 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import api from '../lib/apiClient'
+import Container from '../components/ui/Container'
+import Input from '../components/ui/Input'
+import Button from '../components/ui/Button'
+import Card from '../components/ui/Card'
+import illu from '../assets/satvertexlogo1.jpg'
 
 function Login() {
   const navigate = useNavigate()
@@ -22,7 +27,6 @@ function Login() {
         email: form.email,
         password: form.password,
       })
-      // backend must return: { token, user: { ... } }
 
       localStorage.setItem('token', data.token)
       localStorage.setItem('user', JSON.stringify(data.user))
@@ -39,56 +43,60 @@ function Login() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-900">
-      <div className="w-full max-w-md bg-slate-800/90 border border-slate-700 rounded-2xl p-8 shadow-xl">
-        <h1 className="text-2xl font-semibold text-white text-center mb-6">
-          SATVertex Admin Login
-        </h1>
+    <div className="min-h-screen flex items-center py-12">
+      <Container>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div className="hidden md:flex flex-col gap-4">
+            <h1 className="text-3xl font-bold">SATVertex CMS</h1>
+            <p className="text-slate-400">Admin panel to manage your portfolio content. Clean, fast, and secure.</p>
 
-        {error && (
-          <p className="mb-4 text-sm text-red-400 bg-red-900/40 px-3 py-2 rounded">
-            {error}
-          </p>
-        )}
-
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-sm text-slate-300 mb-1">Email</label>
-            <input
-              type="email"
-              name="email"
-              className="w-full rounded-lg bg-slate-900 border border-slate-700 px-3 py-2 text-sm text-white"
-              value={form.email}
-              onChange={handleChange}
-              required
-            />
+            <div className="mt-4">
+              <img src={illu} alt="Admin illustration" className="w-full max-w-sm opacity-90" />
+            </div>
           </div>
 
-          <div>
-            <label className="block text-sm text-slate-300 mb-1">Password</label>
-            <input
-              type="password"
-              name="password"
-              className="w-full rounded-lg bg-slate-900 border border-slate-700 px-3 py-2 text-sm text-white"
-              value={form.password}
-              onChange={handleChange}
-              required
-            />
-          </div>
+          <Card className="mx-auto w-full max-w-md">
+            <h2 className="text-xl font-semibold mb-3">Welcome back</h2>
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full mt-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 disabled:opacity-60 text-white py-2 text-sm font-medium transition"
-          >
-            {loading ? 'Logging in...' : 'Login'}
-          </button>
-        </form>
+            {error && (
+              <p className="mb-4 text-sm text-red-400 bg-red-900/40 px-3 py-2 rounded">
+                {error}
+              </p>
+            )}
 
-        <p className="mt-4 text-xs text-slate-400 text-center">
-          Default admin: admin@satvertex.dev / Admin@12345
-        </p>
-      </div>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <Input
+                label="Email"
+                type="email"
+                name="email"
+                value={form.email}
+                onChange={handleChange}
+                required
+              />
+
+              <Input
+                label="Password"
+                type="password"
+                name="password"
+                value={form.password}
+                onChange={handleChange}
+                required
+              />
+
+              <div className="flex items-center justify-between">
+                <div className="text-xs text-slate-400">Forgot password? Ask repo owner</div>
+                <Button type="submit" disabled={loading}>
+                  {loading ? 'Logging in...' : 'Login'}
+                </Button>
+              </div>
+            </form>
+
+            <p className="mt-4 text-xs text-slate-400 text-center">
+              Default admin: admin@satvertex.dev / Admin@12345
+            </p>
+          </Card>
+        </div>
+      </Container>
     </div>
   )
 }
