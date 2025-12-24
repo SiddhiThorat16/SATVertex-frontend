@@ -58,6 +58,10 @@ function Dashboard() {
                 <SidebarButton onClick={() => goTo('/admin/skills')}>Skills</SidebarButton>
                 <SidebarButton onClick={() => goTo('/admin/projects')}>Projects</SidebarButton>
                 <SidebarButton onClick={() => goTo('/admin/blogs')}>Blogs</SidebarButton>
+                <SidebarButton onClick={() => goTo('/admin/testimonials')}>Testimonials</SidebarButton>
+                <SidebarButton onClick={() => goTo('/admin/experience')}>Experience</SidebarButton>
+                <SidebarButton onClick={() => goTo('/admin/services')}>Services</SidebarButton>
+                <SidebarButton onClick={() => goTo('/admin/messages')}>Messages</SidebarButton>
               </div>
             </nav>
           </aside>

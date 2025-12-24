@@ -4,6 +4,10 @@ import Dashboard from "./pages/Dashboard.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
 import SkillsPage from "./pages/SkillsPage.jsx";
 import ProjectsPage from "./pages/ProjectsPage.jsx";
+import BlogsPage from "./pages/BlogsPage.jsx";
+import TestimonialsPage from "./pages/TestimonialsPage.jsx";
+import ExperiencePage from "./pages/ExperiencePage.jsx";
+import ServicesPage from "./pages/ServicesPage.jsx";
 
 function PrivateRoute({ children }) {
   const token = localStorage.getItem("token");
@@ -45,6 +49,38 @@ function App() {
         element={
           <PrivateRoute>
             <ProjectsPage />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/admin/blogs"
+        element={
+          <PrivateRoute>
+            <BlogsPage />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/admin/testimonials"
+        element={
+          <PrivateRoute>
+            <TestimonialsPage />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/admin/experience"
+        element={
+          <PrivateRoute>
+            <ExperiencePage />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/admin/services"
+        element={
+          <PrivateRoute>
+            <ServicesPage />
           </PrivateRoute>
         }
       />
