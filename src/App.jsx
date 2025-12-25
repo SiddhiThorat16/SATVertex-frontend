@@ -8,6 +8,7 @@ import BlogsPage from "./pages/BlogsPage.jsx";
 import TestimonialsPage from "./pages/TestimonialsPage.jsx";
 import ExperiencePage from "./pages/ExperiencePage.jsx";
 import ServicesPage from "./pages/ServicesPage.jsx";
+import MessagesPage from "./pages/MessagesPage.jsx";
 
 function PrivateRoute({ children }) {
   const token = localStorage.getItem("token");
@@ -81,6 +82,14 @@ function App() {
         element={
           <PrivateRoute>
             <ServicesPage />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/admin/messages"
+        element={
+          <PrivateRoute>
+            <MessagesPage />
           </PrivateRoute>
         }
       />
