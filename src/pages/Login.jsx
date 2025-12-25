@@ -5,7 +5,7 @@ import Container from '../components/ui/Container'
 import Input from '../components/ui/Input'
 import Button from '../components/ui/Button'
 import Card from '../components/ui/Card'
-import illu from '../assets/satvertexlogo1.jpg'
+import illu from '../assets/logo1.jpg'
 
 function Login() {
   const navigate = useNavigate()
